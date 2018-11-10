@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const studentsRouter = require('./students')
 
 // Init App
 const app = express();
@@ -10,6 +11,15 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
+
+// app.get('/', (req,res,next) => {
+//   res.send('HELLO WORLD!')
+// }) *this works*
+
+
+app.use('/students', studentsRouter);
+
+
 
 // Listen on server
 
